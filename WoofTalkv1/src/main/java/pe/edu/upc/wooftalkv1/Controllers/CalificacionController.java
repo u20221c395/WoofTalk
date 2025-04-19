@@ -1,0 +1,58 @@
+package pe.edu.upc.wooftalkv1.Controllers;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.wooftalkv1.DTOS.CalificacionDTO;
+import pe.edu.upc.wooftalkv1.entities.Calificacion;
+import pe.edu.upc.wooftalkv1.servicesInterfaces.ICalificacionServices;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class CalificacionController {
+
+    @Autowired
+    private ICalificacionServices icalificacionServices;
+
+    //Listar Calificacion
+    @GetMapping("/listar")
+    public List<CalificacionDTO> obtenerCalificaciones(){
+
+        return icalificacionServices.listar().stream().map(x->{
+            ModelMapper m=new ModelMapper();
+            return m.map(x,CalificacionDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    //Registrar Calificacion
+    @PostMapping("/registrar")
+    public void registrar(@RequestBody CalificacionDTO calificacionDTO) {
+        ModelMapper m = new ModelMapper();
+        Calificacion calificacion = m.map(calificacionDTO, Calificacion.class);
+        icalificacionServices.registrar(calificacion);
+    }
+
+    //Listar por Id Calificacion
+    @GetMapping("/{id}")
+    public CalificacionDTO listarId(@PathVariable("id") Long id){
+        ModelMapper m = new ModelMapper();
+        CalificacionDTO calificacionDTO=m.map(icalificacionServices.listarId(id),CalificacionDTO.class);
+        return calificacionDTO;
+    }
+
+    //Actualizar Calificacion
+    @PutMapping("/actualizar")
+    public void actualizar(@RequestBody CalificacionDTO calificacionDTO){
+        ModelMapper m=new ModelMapper();
+        Calificacion calificacion =m.map(calificacionDTO,Calificacion.class);
+        icalificacionServices.actualizar(calificacion);
+    }
+
+    //Eliminar Calificacion
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Long id){
+        icalificacionServices.eliminar(id);
+    }
+}
+
