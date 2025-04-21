@@ -19,7 +19,7 @@ public class ClimaServiceImplement implements IClimaServices {
     }
 
     @Override
-    public void insert(Clima clima){
+    public void insert(Clima clima) {
         cR.save(clima);
     }
 
