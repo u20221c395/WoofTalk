@@ -12,30 +12,30 @@ import java.util.List;
 public class CalificacionServiceImplements implements ICalificacionServices {
 
     @Autowired
-    private ICalificacionRepository icalificacionRepository;
+    private ICalificacionRepository cR;
 
-    //Listar Calificacion
     @Override
-    public List<Calificacion> listar() {return icalificacionRepository.findAll();}
-
-    //Registrar Calificacion
-    @Override
-    public Calificacion registrar(Calificacion calificacion) {return icalificacionRepository.save(calificacion);}
-
-    //Listar por Id Calificacion
-    @Override
-    public Calificacion listarId(Long id) {
-        return icalificacionRepository.findById(id).orElse(new Calificacion());
+    public List<Calificacion> listar(){
+        return cR.findAll();
     }
 
-    //Actualizar Calificacion
     @Override
-    public void actualizar(Calificacion calificacion) {icalificacionRepository.save(calificacion); }
-
-    //Eliminar Calificacion
-    @Override
-    public void eliminar(Long id) {
-        icalificacionRepository.deleteById(id);
+    public Calificacion registrar (Calificacion calificacion) {
+        return cR.save(calificacion);
     }
 
+    @Override
+    public Calificacion listarId(int id){
+        return cR.findBy(id).orElse(new Calificacion());
+    }
+
+    @Override
+    public void actualizar(Calificacion calificacion){
+        cR.save(calificacion);
+    }
+
+    @Override
+    public void eliminar(int id) {
+        cR.deleteById(id);
+    }
 }
