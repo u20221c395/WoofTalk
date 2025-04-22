@@ -26,7 +26,7 @@ public class CalificacionServiceImplements implements ICalificacionServices {
 
     @Override
     public Calificacion listarId(int id){
-        return cR.findBy(id).orElse(new Calificacion());
+        return cR.findById(id).orElse(new Calificacion());
     }
 
     @Override
