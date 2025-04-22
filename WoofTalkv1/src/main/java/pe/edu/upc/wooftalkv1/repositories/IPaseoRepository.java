@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upc.wooftalkv1.entities.Paseo;
 
 @Repository
-
 public interface IPaseoRepository extends JpaRepository<Paseo, Integer>{
 }
