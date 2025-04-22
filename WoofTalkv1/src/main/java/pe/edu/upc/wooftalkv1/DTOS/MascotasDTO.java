@@ -1,6 +1,5 @@
 package pe.edu.upc.wooftalkv1.DTOS;
 
-import jakarta.persistence.Column;
 import pe.edu.upc.wooftalkv1.entities.Calificacion;
 
 public class MascotasDTO {
