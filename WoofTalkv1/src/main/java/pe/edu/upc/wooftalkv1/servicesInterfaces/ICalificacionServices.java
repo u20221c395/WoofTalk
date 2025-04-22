@@ -13,11 +13,11 @@ public interface ICalificacionServices {
     public Calificacion registrar (Calificacion calificacion);
 
     //Listar por Id Calificacion
-    public Calificacion listarId(Long id);
+    public Calificacion listarId(int id);
 
     //Actualizar Calificacion
     public void actualizar(Calificacion calificacion);
 
     //Eliminar Calificacion
-    void eliminar(Long id);
+    void eliminar(int id);
 }

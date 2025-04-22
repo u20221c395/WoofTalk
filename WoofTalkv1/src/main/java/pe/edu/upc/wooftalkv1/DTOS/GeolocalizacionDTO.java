@@ -1,39 +1,16 @@
-package pe.edu.upc.wooftalkv1.entities;
+package pe.edu.upc.wooftalkv1.DTOS;
 
-import jakarta.persistence.*;
+import pe.edu.upc.wooftalkv1.entities.Clima;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "Geolocalizacion")
-public class Geolocalizacion {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class GeolocalizacionDTO {
     private int id;
 
-    @Column(name = "latitud", nullable = false)
     private int latitud;
-
-    @Column(name = "longitud", nullable = false)
     private int longitud;
-
-    @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
-
-    @ManyToOne
-    @JoinColumn(name = "idClima")
     private Clima clima;
-
-    public Geolocalizacion() {
-    }
-
-    public Geolocalizacion(int id, int latitud, int longitud, LocalDate fecha, Clima clima) {
-        this.id = id;
-        this.latitud = latitud;
-        this.longitud = longitud;
-        this.fecha = fecha;
-        this.clima = clima;
-    }
 
     public int getId() {
         return id;

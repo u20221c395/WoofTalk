@@ -10,6 +10,8 @@ import pe.edu.upc.wooftalkv1.servicesInterfaces.ICalificacionServices;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RestController
+@RequestMapping("/calificaciones")
 public class CalificacionController {
 
     @Autowired
@@ -35,7 +37,7 @@ public class CalificacionController {
 
     //Listar por Id Calificacion
     @GetMapping("/{id}")
-    public CalificacionDTO listarId(@PathVariable("id") Long id){
+    public CalificacionDTO listarId(@PathVariable("id") int id){
         ModelMapper m = new ModelMapper();
         CalificacionDTO calificacionDTO=m.map(icalificacionServices.listarId(id),CalificacionDTO.class);
         return calificacionDTO;
@@ -51,7 +53,7 @@ public class CalificacionController {
 
     //Eliminar Calificacion
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Long id){
+    public void eliminar(@PathVariable("id") int id){
         icalificacionServices.eliminar(id);
     }
 }
