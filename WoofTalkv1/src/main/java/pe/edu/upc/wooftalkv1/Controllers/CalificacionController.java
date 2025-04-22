@@ -39,8 +39,8 @@ public class CalificacionController {
     @GetMapping("/{id}")
     public CalificacionDTO listarId(@PathVariable("id") int id){
         ModelMapper m = new ModelMapper();
-        CalificacionDTO calificacionDTO=m.map(icalificacionServices.listarId(id),CalificacionDTO.class);
-        return calificacionDTO;
+        CalificacionDTO dto=m.map(icalificacionServices.find(id),CalificacionDTO.class);
+        return dto;
     }
 
     //Actualizar Calificacion
@@ -57,4 +57,5 @@ public class CalificacionController {
         icalificacionServices.eliminar(id);
     }
 }
+
 
