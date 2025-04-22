@@ -8,3 +8,4 @@ public interface IGeolocalizacionServices {
     public List<Geolocalizacion> list();
     public void insert(Geolocalizacion geolocalizacion);
 }
+
