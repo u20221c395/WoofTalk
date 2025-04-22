@@ -3,9 +3,11 @@ package pe.edu.upc.wooftalkv1.entities;
 import jakarta.persistence.*;
 import org.modelmapper.internal.bytebuddy.utility.nullability.MaybeNull;
 
+@Entity
+@Table(name="Mascota")
 public class Mascota {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "nombre", length = 40, nullable = false)
@@ -109,3 +111,4 @@ public class Mascota {
         this.calificacion = calificacion;
     }
 }
+
