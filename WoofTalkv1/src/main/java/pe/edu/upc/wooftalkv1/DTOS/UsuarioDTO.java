@@ -7,15 +7,17 @@ public class UsuarioDTO {
 
     private int id;
 
-    private String usuario;
+    private String username;
 
-    private String contrasena;
+    private String password;
 
     private String nombre;
 
     private String apellido;
 
     private String telefono;
+
+    private Boolean enabled;
 
     private Rol rol;
 
@@ -29,20 +31,20 @@ public class UsuarioDTO {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNombre() {
@@ -69,6 +71,14 @@ public class UsuarioDTO {
         this.telefono = telefono;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public Rol getRol() {
         return rol;
     }
@@ -85,3 +95,4 @@ public class UsuarioDTO {
         this.calificacion = calificacion;
     }
 }
+
