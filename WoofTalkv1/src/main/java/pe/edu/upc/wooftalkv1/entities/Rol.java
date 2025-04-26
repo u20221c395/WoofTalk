@@ -10,15 +10,15 @@ public class Rol {
     private int id;
 
 
-    @Column(name="TipoRol",length = 20,nullable = false )
-    private String TipoRol;
+    @Column(name="Rol",length = 20,nullable = false )
+    private String Rol;
 
     public Rol() {
     }
 
-    public Rol(int id, String tipoRol) {
+    public Rol(int id, String rol) {
         this.id = id;
-        TipoRol = tipoRol;
+        Rol = rol;
     }
 
     public int getId() {
@@ -29,11 +29,11 @@ public class Rol {
         this.id = id;
     }
 
-    public String getTipoRol() {
-        return TipoRol;
+    public String getRol() {
+        return Rol;
     }
 
-    public void setTipoRol(String tipoRol) {
-        TipoRol = tipoRol;
+    public void setRol(String rol) {
+        Rol = rol;
     }
 }
