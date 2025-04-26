@@ -2,6 +2,8 @@ package pe.edu.upc.wooftalkv1.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
@@ -10,11 +12,11 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "usuario", length = 30, unique = true)
-    private String usuario;
+    @Column(name = "username", length = 30, unique = true)
+    private String username;
 
-    @Column(name = "contrasena", length = 50)
-    private String contrasena;
+    @Column(name = "password", length = 50)
+    private String password;
 
     @Column(name = "nombre", length = 10, nullable = false)
     private String nombre;
@@ -24,6 +26,8 @@ public class Usuario {
 
     @Column(name = "telefono", length = 9, nullable = false)
     private String telefono;
+
+    private Boolean enabled;
 
     @ManyToOne
     @JoinColumn(name = "rol_id")
@@ -36,13 +40,14 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String usuario, String contrasena, String apellido, String nombre, String telefono, Rol rol, Calificacion calificacion) {
+    public Usuario(Long id, String username, String password, String nombre, String apellido, String telefono, Boolean enabled, Rol rol, Calificacion calificacion) {
         this.id = id;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-        this.apellido = apellido;
+        this.username = username;
+        this.password = password;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.telefono = telefono;
+        this.enabled = enabled;
         this.rol = rol;
         this.calificacion = calificacion;
     }
@@ -55,20 +60,20 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNombre() {
@@ -77,14 +82,6 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
     }
 
     public String getApellido() {
@@ -101,6 +98,22 @@ public class Usuario {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     public Calificacion getCalificacion() {
