@@ -4,7 +4,7 @@ package pe.edu.upc.wooftalkv1.DTOS;
 public class RolDTO {
     private int id;
 
-    private String TipoRol;
+    private String Rol;
 
     public int getId() {
         return id;
@@ -14,11 +14,11 @@ public class RolDTO {
         this.id = id;
     }
 
-    public String getTipoRol() {
-        return TipoRol;
+    public String getRol() {
+        return Rol;
     }
 
-    public void setTipoRol(String tipoRol) {
-        TipoRol = tipoRol;
+    public void setRol(String rol) {
+        Rol = rol;
     }
 }
