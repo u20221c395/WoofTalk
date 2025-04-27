@@ -1,4 +1,4 @@
-package pe.edu.upc.demo3155api.servicesimplements;
+package pe.edu.upc.wooftalkv1.servicesImplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -7,38 +7,41 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demo3155api.entiities.Users;
-import pe.edu.upc.demo3155api.repositories.IUserRepository;
-
-
-
+import pe.edu.upc.wooftalkv1.entities.Rol;
+import pe.edu.upc.wooftalkv1.entities.Usuario;
+import pe.edu.upc.wooftalkv1.repositories.IUsuarioRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-//Clase 2
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
     @Autowired
-    private IUserRepository repo;
+    private IUsuarioRepository repo;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = repo.findOneByUsername(username);
+        Usuario user = repo.findOneByUsername(username);
 
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User not exists", username));
         }
 
-        List<GrantedAuthority> roles = new ArrayList<>();
+        Rol rol = user.getRol();
 
-        user.getRoles().forEach(rol -> {
-            roles.add(new SimpleGrantedAuthority(rol.getRol()));
-        });
+        List<GrantedAuthority> authorities = new ArrayList<>();
 
-        UserDetails ud = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getEnabled(), true, true, true, roles);
+        authorities.add(new SimpleGrantedAuthority(rol.getRol()));
+
+        UserDetails ud = new org.springframework.security.core.userdetails.User(
+                user.getUsername(),
+                user.getPassword(),
+                user.getEnabled(),
+                true, true, true,
+                authorities
+        );
 
         return ud;
     }
