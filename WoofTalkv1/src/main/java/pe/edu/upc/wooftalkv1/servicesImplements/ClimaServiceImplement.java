@@ -11,25 +11,25 @@ import java.util.List;
 @Service
 public class ClimaServiceImplement implements IClimaServices {
     @Autowired
-    private IClimaRepository cR;
+    private IClimaRepository cRe;
 
     @Override
     public List<Clima> list(){
-        return cR.findAll();
+        return cRe.findAll();
     }
 
     @Override
     public void insert(Clima clima) {
-        cR.save(clima);
+        cRe.save(clima);
     }
 
     @Override
     public void update(Clima c){
-        cR.save(c);
+        cRe.save(c);
     }
 
     @Override
     public void delete(int id){
-        cR.deleteById(id);
+        cRe.deleteById(id);
     }
 }
