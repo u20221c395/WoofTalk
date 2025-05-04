@@ -2,6 +2,7 @@ package pe.edu.upc.wooftalkv1.Controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.GeolocalizacionDTO;
 import pe.edu.upc.wooftalkv1.entities.Geolocalizacion;
@@ -16,7 +17,8 @@ public class GeolocalizacionController {
     @Autowired
     private IGeolocalizacionServices gS;
 
-    @GetMapping("/lista")
+    @GetMapping("/listar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     private List<GeolocalizacionDTO> lista() {
         return gS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -24,7 +26,8 @@ public class GeolocalizacionController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping("/insertar")
+    @PostMapping("/registrar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     private void insert(@RequestBody GeolocalizacionDTO geolocalizacionDTO) {
         ModelMapper m = new ModelMapper();
         Geolocalizacion geolocalizacion = m.map(geolocalizacionDTO, Geolocalizacion.class);
