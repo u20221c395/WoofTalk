@@ -2,11 +2,15 @@ package pe.edu.upc.wooftalkv1.Controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.EnfermedadDTO;
+import pe.edu.upc.wooftalkv1.DTOS.MascotasDTO;
 import pe.edu.upc.wooftalkv1.DTOS.RolDTO;
+import pe.edu.upc.wooftalkv1.DTOS.UsuarioDTO;
 import pe.edu.upc.wooftalkv1.entities.Enfermedad;
 import pe.edu.upc.wooftalkv1.entities.Rol;
+import pe.edu.upc.wooftalkv1.entities.Usuario;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IEnfermedadServices;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IRolServices;
 
@@ -21,6 +25,7 @@ public class EnfermedadController {
     private IEnfermedadServices rE;
 
     @GetMapping("/listar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public List<EnfermedadDTO> listar() {
         return rE.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -29,23 +34,35 @@ public class EnfermedadController {
 
     }
 
-    @PostMapping("/agregar")
-    public void insertar(@RequestBody EnfermedadDTO enfermedadDTO) {
-
+    @PostMapping("/registrar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public void Registrar (@RequestBody EnfermedadDTO enfermedadDTO) {
         ModelMapper m = new ModelMapper();
         Enfermedad r = m.map(enfermedadDTO, Enfermedad.class);
         rE.insert(r);
     }
 
-    @PutMapping
+    @PutMapping("/actualizar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody EnfermedadDTO dto) {
         ModelMapper m = new ModelMapper();
         Enfermedad r = m.map(dto , Enfermedad.class);
         rE.update(r);
     }
-    @DeleteMapping("/{id}")
+
+    @GetMapping("/buscarporid/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public EnfermedadDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        EnfermedadDTO dto = m.map(rE.listarId(id), EnfermedadDTO.class);
+        return dto;
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") int id) {
         rE.delete(id);
     }
 
 }
+
