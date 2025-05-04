@@ -2,8 +2,10 @@ package pe.edu.upc.wooftalkv1.Controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.MascotasDTO;
+import pe.edu.upc.wooftalkv1.DTOS.PaseoDTO;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IMascotasServices;
 
@@ -17,7 +19,8 @@ public class MascotasController {
     @Autowired
     private IMascotasServices mS;
 
-    @GetMapping("listar")
+    @GetMapping("/listar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public List<MascotasDTO> listar(){
         return mS.list().stream().map( x->{
             ModelMapper m = new ModelMapper();
@@ -25,22 +28,34 @@ public class MascotasController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping("/agregar")
+    @PostMapping("/registrar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void agregar(@RequestBody MascotasDTO mascotasDTO){
         ModelMapper m = new ModelMapper();
         Mascotas ma = m.map(mascotasDTO,Mascotas.class);
         mS.insert(ma);
     }
 
-    @PutMapping
+    @PutMapping("/actualizar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody MascotasDTO mascotasDTO){
         ModelMapper m = new ModelMapper();
         Mascotas ma = m.map(mascotasDTO,Mascotas.class);
         mS.update(ma);
     }
 
-    @DeleteMapping("{id}")
+    @GetMapping("/buscarporid/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public MascotasDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        MascotasDTO mascotasDTO = m.map(mS.listarId(id), MascotasDTO.class);
+        return mascotasDTO;
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") int id){
         mS.delete(id);
     }
 }
+
