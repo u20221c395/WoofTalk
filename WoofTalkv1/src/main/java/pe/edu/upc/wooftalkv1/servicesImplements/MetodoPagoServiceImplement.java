@@ -3,6 +3,7 @@ package pe.edu.upc.wooftalkv1.servicesImplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.entities.MetodoPago;
+import pe.edu.upc.wooftalkv1.entities.Usuario;
 import pe.edu.upc.wooftalkv1.repositories.IMetodoPagoRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IMetodoPagoServices;
 
@@ -25,6 +26,11 @@ public class MetodoPagoServiceImplement implements IMetodoPagoServices {
     @Override
     public void update(MetodoPago metodoPago) {
         mpR.save(metodoPago);
+    }
+
+    @Override
+    public MetodoPago listarId(int id) {
+        return mpR.findById(id).orElse(new MetodoPago());
     }
 
     @Override
