@@ -2,6 +2,7 @@ package pe.edu.upc.wooftalkv1.Controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.CalificacionDTO;
 import pe.edu.upc.wooftalkv1.entities.Calificacion;
@@ -19,6 +20,7 @@ public class CalificacionController {
 
     //Listar Calificacion
     @GetMapping("/listar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public List<CalificacionDTO> obtenerCalificaciones(){
 
         return icalificacionServices.listar().stream().map(x->{
@@ -29,6 +31,7 @@ public class CalificacionController {
 
     //Registrar Calificacion
     @PostMapping("/registrar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void registrar(@RequestBody CalificacionDTO calificacionDTO) {
         ModelMapper m = new ModelMapper();
         Calificacion calificacion = m.map(calificacionDTO, Calificacion.class);
@@ -36,7 +39,8 @@ public class CalificacionController {
     }
 
     //Listar por Id Calificacion
-    @GetMapping("/{id}")
+    @GetMapping("/buscarporid/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public CalificacionDTO listarId(@PathVariable("id") int id){
         ModelMapper m = new ModelMapper();
         CalificacionDTO dto=m.map(icalificacionServices.find(id),CalificacionDTO.class);
@@ -45,6 +49,7 @@ public class CalificacionController {
 
     //Actualizar Calificacion
     @PutMapping("/actualizar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void actualizar(@RequestBody CalificacionDTO calificacionDTO){
         ModelMapper m=new ModelMapper();
         Calificacion calificacion =m.map(calificacionDTO,Calificacion.class);
@@ -52,7 +57,8 @@ public class CalificacionController {
     }
 
     //Eliminar Calificacion
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") int id){
         icalificacionServices.eliminar(id);
     }
