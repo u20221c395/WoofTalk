@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.MascotasDTO;
+import pe.edu.upc.wooftalkv1.DTOS.MascotasporDuenoDTO;
 import pe.edu.upc.wooftalkv1.DTOS.PaseoDTO;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IMascotasServices;
