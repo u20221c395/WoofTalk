@@ -6,4 +6,9 @@ import pe.edu.upc.wooftalkv1.entities.Mascotas;
 
 @Repository
 public interface IMascotasRepository extends JpaRepository<Mascotas, Integer>{
+
+      @Query("SELECT m FROM Mascotas m WHERE m.edad > 10")
+    List<Mascotas> Mascotasconedadmasde10();
+
+  
 }
