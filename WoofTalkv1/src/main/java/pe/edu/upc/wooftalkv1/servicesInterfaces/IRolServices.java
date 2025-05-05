@@ -9,5 +9,6 @@ public interface IRolServices {
     public void insert(Rol rol);
     public void update(Rol r);
     public void delete(int id);
+    public List<String[]> cantidadTotalDeRolUsuariosRegistrados();
 
 }
