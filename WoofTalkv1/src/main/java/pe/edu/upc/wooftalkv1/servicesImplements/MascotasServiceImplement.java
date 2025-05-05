@@ -2,6 +2,7 @@ package pe.edu.upc.wooftalkv1.servicesImplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.wooftalkv1.DTOS.MascotasporDuenoDTO;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.entities.Rol;
