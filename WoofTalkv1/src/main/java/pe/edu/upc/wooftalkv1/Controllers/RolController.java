@@ -4,10 +4,12 @@ package pe.edu.upc.wooftalkv1.Controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.wooftalkv1.DTOS.CantidadRolUsuarioDTO;
 import pe.edu.upc.wooftalkv1.DTOS.RolDTO;
 import pe.edu.upc.wooftalkv1.entities.Rol;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IRolServices;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,5 +45,21 @@ public class RolController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id) {
         rI.delete(id);
+    }
+
+
+    @GetMapping("/listarCantidadDeUsuariosRegistrados")
+    public List<CantidadRolUsuarioDTO> listarCantidad() {
+
+        List<String[]>cplista=rI.cantidadTotalDeRolUsuariosRegistrados();
+        List<CantidadRolUsuarioDTO>cplistaDTO =new ArrayList<>();
+
+        for (String[] colummna:cplista){
+            CantidadRolUsuarioDTO rIDTO = new CantidadRolUsuarioDTO();
+            rIDTO.setCantidad(Integer.parseInt(colummna[0]));
+            cplistaDTO.add(rIDTO);
+        }
+        return cplistaDTO;
+
     }
 }
