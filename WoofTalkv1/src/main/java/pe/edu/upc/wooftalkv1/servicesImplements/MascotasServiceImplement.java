@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.DTOS.MascotasporDuenoDTO;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
-import pe.edu.upc.wooftalkv1.entities.MetodoPago;
-import pe.edu.upc.wooftalkv1.entities.Rol;
 import pe.edu.upc.wooftalkv1.repositories.IMascotasRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IMascotasServices;
 
@@ -47,5 +45,10 @@ public class MascotasServiceImplement implements IMascotasServices {
        @Override
     public List<MascotasporDuenoDTO> MascotasporDueno() {
         return mR.mascotastotalporDueno();
+    }
+
+    @Override
+    public List<Mascotas> mascotasPorRaza(){
+        return mR.mascotasPorRaza();
     }
 }

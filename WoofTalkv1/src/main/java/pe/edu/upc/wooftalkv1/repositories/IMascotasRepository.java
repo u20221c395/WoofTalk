@@ -17,4 +17,10 @@ public interface IMascotasRepository extends JpaRepository<Mascotas, Integer>{
       @Query("SELECT new pe.edu.upc.wooftalkv1.DTOS.MascotasporDuenoDTO(CONCAT(u.nombre, ' ', u.apellido), COUNT(m)) " +
             "FROM Mascotas m JOIN m.usuario u GROUP BY u.nombre, u.apellido")
     public List<MascotasporDuenoDTO> mascotastotalporDueno();
+
+      //Cantidad de mascotas por raza
+      @Query(value = "SELECT m.raza as Razas, COUNT(*) as CANTIDAD\n" +
+              "FROM mascotas m \n" +
+              "GROUP BY m.raza",nativeQuery = true)
+    public List<Mascotas> mascotasPorRaza();
 }
