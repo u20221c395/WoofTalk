@@ -36,4 +36,9 @@ public class RolServiceImplements implements IRolServices {
     public void delete(int id) {
         rS.deleteById(id);
     }
+
+    @Override
+    public List<String[]> cantidadTotalDeRolUsuariosRegistrados() {
+        return rS.cantidadTotalDeRolUsuariosRegistrados();
+    }
 }
