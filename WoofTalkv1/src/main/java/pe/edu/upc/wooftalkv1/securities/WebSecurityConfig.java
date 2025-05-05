@@ -77,5 +77,5 @@ public class WebSecurityConfig {
                 .sessionManagement(Customizer.withDefaults());
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
-    }
+    }
 }

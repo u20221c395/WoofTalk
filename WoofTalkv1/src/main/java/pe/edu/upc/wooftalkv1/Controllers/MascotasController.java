@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.MascotasDTO;
 import pe.edu.upc.wooftalkv1.DTOS.MascotasporDuenoDTO;
 import pe.edu.upc.wooftalkv1.DTOS.PaseoDTO;
+import pe.edu.upc.wooftalkv1.DTOS.RazaMascotaDTO;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IMascotasServices;
 
@@ -70,6 +71,14 @@ public class MascotasController {
         @GetMapping("/mascotasporDueno")
     public List<MascotasporDuenoDTO> mascotasporDueno() {
         return mS.MascotasporDueno();
+    }
+
+    @GetMapping("/razasdemascotas")
+    public List<RazaMascotaDTO> mascotasPorRaza(){
+        return mS.mascotasPorRaza().stream().map(x-> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x,RazaMascotaDTO.class);
+        }).collect(Collectors.toList());
     }
 }
 
