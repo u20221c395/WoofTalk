@@ -37,4 +37,9 @@ public class MascotasServiceImplement implements IMascotasServices {
     public void delete(int id) {
         mR.deleteById(id);
     }
+
+        @Override
+    public List<Mascotas> Mascotasconedadmasde10() {
+        return mR.Mascotasconedadmasde10();
+    }
 }
