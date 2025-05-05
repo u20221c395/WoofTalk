@@ -12,5 +12,5 @@ public interface IMascotasServices {
     public void update(Mascotas mascotas);
     public Mascotas listarId(int id);
     public void delete(int id);
-
+    public List<Mascotas> Mascotasconedadmasde10();
 }
