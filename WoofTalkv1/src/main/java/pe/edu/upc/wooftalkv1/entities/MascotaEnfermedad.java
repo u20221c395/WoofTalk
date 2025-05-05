@@ -11,7 +11,7 @@ public class MascotaEnfermedad {
 
     @ManyToOne
     @JoinColumn(name = "idMascota")
-    private Mascota mascota;
+    private Mascotas mascota;
 
     @ManyToOne
     @JoinColumn(name = "idEnfermedad")
@@ -20,7 +20,7 @@ public class MascotaEnfermedad {
     public MascotaEnfermedad() {
     }
 
-    public MascotaEnfermedad(int id, Mascota mascota, Enfermedad enfermedad) {
+    public MascotaEnfermedad(int id, Mascotas mascota, Enfermedad enfermedad) {
         this.id = id;
         this.mascota = mascota;
         this.enfermedad = enfermedad;
@@ -34,11 +34,11 @@ public class MascotaEnfermedad {
         this.id = id;
     }
 
-    public Mascota getMascota() {
+    public Mascotas getMascota() {
         return mascota;
     }
 
-    public void setMascota(Mascota mascota) {
+    public void setMascota(Mascotas mascota) {
         this.mascota = mascota;
     }
 
