@@ -42,4 +42,9 @@ public class MascotasServiceImplement implements IMascotasServices {
     public List<Mascotas> Mascotasconedadmasde10() {
         return mR.Mascotasconedadmasde10();
     }
+
+       @Override
+    public List<MascotasporDuenoDTO> MascotasporDueno() {
+        return mR.mascotastotalporDueno();
+    }
 }
