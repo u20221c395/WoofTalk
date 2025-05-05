@@ -65,5 +65,10 @@ public class MascotasController {
             return mmm.map(x,MascotasDTO.class);
         }).collect(Collectors.toList());
     }
+
+        @GetMapping("/mascotasporDueno")
+    public List<MascotasporDuenoDTO> mascotasporDueno() {
+        return mS.MascotasporDueno();
+    }
 }
 
