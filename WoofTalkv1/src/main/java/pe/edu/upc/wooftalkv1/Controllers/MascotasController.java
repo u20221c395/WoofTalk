@@ -57,5 +57,13 @@ public class MascotasController {
     public void eliminar(@PathVariable("id") int id){
         mS.delete(id);
     }
+
+        @GetMapping("/mascotasconedadmasde10")
+    public List<MascotasDTO> edadsmasde10(){
+        return mS.Mascotasconedadmasde10().stream().map(x->{
+            ModelMapper mmm=new ModelMapper();
+            return mmm.map(x,MascotasDTO.class);
+        }).collect(Collectors.toList());
+    }
 }
 
