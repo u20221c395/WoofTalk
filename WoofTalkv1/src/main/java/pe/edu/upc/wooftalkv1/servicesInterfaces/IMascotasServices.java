@@ -13,4 +13,5 @@ public interface IMascotasServices {
     public Mascotas listarId(int id);
     public void delete(int id);
     public List<Mascotas> Mascotasconedadmasde10();
+    List<MascotasporDuenoDTO> MascotasporDueno();
 }
