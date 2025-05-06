@@ -85,5 +85,6 @@ public class MascotasController {
             return m.map(x,BuscarMascotaTamanioDTO.class);
         }).collect(Collectors.toList());
     }
+
 }
 
