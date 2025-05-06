@@ -71,7 +71,8 @@ public class MascotasController {
     }
 
     @GetMapping("/razasdemascotas")
-    public List<RazaMascotaDTO> mascotasPorRaza(){
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public List<RazaMascotaDTO> mascotasPorRaza() {
         return mS.mascotasPorRaza().stream().map(x-> {
             ModelMapper m = new ModelMapper();
             return m.map(x,RazaMascotaDTO.class);
@@ -79,6 +80,7 @@ public class MascotasController {
     }
 
     @GetMapping("/mascotasPorTamaño")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public List<BuscarMascotaTamanioDTO> listarMascotasPorTamanio(@RequestParam String tamanio){
         return mS.buscarPorTamanio(tamanio).stream().map(x -> {
             ModelMapper m = new ModelMapper();
