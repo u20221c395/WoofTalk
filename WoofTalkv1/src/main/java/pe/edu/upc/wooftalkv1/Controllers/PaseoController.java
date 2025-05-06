@@ -59,10 +59,10 @@ public class PaseoController {
 
     @GetMapping("/buscarporfecha")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public List<PaseoDTO> buscarFechaInicio(@RequestParam LocalDate fecha_inicio) {
-        return pS.buscarFecha_inicio(fecha_inicio).stream().map(y ->{
+    public List<PaseoDTO> buscarFechaInicio(@RequestParam LocalDate fecha) {
+        return pS.buscarFecha_inicio(fecha).stream().map(y ->{
             ModelMapper m = new ModelMapper();
-            return m.map(y,PaseoDTO.class);
+            return m.map(y, PaseoDTO.class);
         }).collect(Collectors.toList());
     }
 
