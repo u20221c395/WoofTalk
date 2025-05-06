@@ -2,6 +2,7 @@ package pe.edu.upc.wooftalkv1.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.wooftalkv1.DTOS.MascotasporDuenoDTO;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
@@ -23,4 +24,9 @@ public interface IMascotasRepository extends JpaRepository<Mascotas, Integer>{
               "FROM mascotas m \n" +
               "GROUP BY m.raza",nativeQuery = true)
     public List<Mascotas> mascotasPorRaza();
+
+      @Query(value = "Select m.nombre as Nombre_mascota\n" +
+              "FROM mascotas m\n" +
+              "WHERE m.tamanio = :tamanio",nativeQuery = true)
+    public List<Mascotas> buscarPorTamañoMascota(@Param("tamanio") String tamanio);
 }
