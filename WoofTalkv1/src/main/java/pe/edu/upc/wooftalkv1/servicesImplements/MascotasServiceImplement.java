@@ -51,4 +51,9 @@ public class MascotasServiceImplement implements IMascotasServices {
     public List<Mascotas> mascotasPorRaza(){
         return mR.mascotasPorRaza();
     }
+
+    @Override
+    public List<Mascotas> buscarPorTamanio(String tamanio) {
+        return mR.buscarPorTamañoMascota(tamanio);
+    }
 }
