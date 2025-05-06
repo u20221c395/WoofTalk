@@ -8,6 +8,7 @@ import pe.edu.upc.wooftalkv1.DTOS.PaseoDTO;
 import pe.edu.upc.wooftalkv1.entities.Paseo;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IPaseoServices;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,4 +56,15 @@ public class PaseoController {
     public void eliminar(@PathVariable("id") int id){
         pS.delete(id);
     }
+
+    @GetMapping("/buscarporfecha")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public List<PaseoDTO> buscarFechaInicio(@RequestParam LocalDate fecha_inicio) {
+        return pS.buscarFecha_inicio(fecha_inicio).stream().map(y ->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,PaseoDTO.class);
+        }).collect(Collectors.toList());
+    }
+
 }
+
