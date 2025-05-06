@@ -4,7 +4,6 @@ package pe.edu.upc.wooftalkv1.servicesImplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.entities.Paseo;
-import pe.edu.upc.wooftalkv1.entities.Usuario;
 import pe.edu.upc.wooftalkv1.repositories.IPaseoRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IPaseoServices;
 
@@ -37,12 +36,8 @@ public class PaseoServiceImplement implements IPaseoServices {
     }
 
     @Override
-    public void delete(int id) {
-        pR.deleteById(id);
-    }
+    public void delete(int id) {pR.deleteById(id);}
 
     @Override
-    public List<Paseo> buscarFecha_inicio(LocalDate fecha_inicio) {
-        return pR.findByFecha_inicio(fecha_inicio);
-    }
+    public List<Paseo> buscarFecha_inicio(LocalDate fecha) {return pR.buscarPaseosPorFecha(fecha);}
 }
