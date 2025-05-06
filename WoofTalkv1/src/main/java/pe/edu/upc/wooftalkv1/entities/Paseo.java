@@ -2,7 +2,7 @@ package pe.edu.upc.wooftalkv1.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Paseo")
@@ -17,10 +17,10 @@ public class Paseo {
     private String descripcion;
 
     @Column(name = "Fecha_inicio", nullable = false)
-    private Date fecha_inicio;
+    private LocalDate fecha_inicio;
 
     @Column(name = "Fecha_fin", nullable = false)
-    private Date fecha_fin;
+    private LocalDate fecha_fin;
 
     @ManyToOne
     @JoinColumn(name = "Id_mascotas")
@@ -37,7 +37,7 @@ public class Paseo {
     public Paseo() {
     }
 
-    public Paseo(int id, String descripcion, Date fecha_inicio, Date fecha_fin, Mascotas mascotas, Geolocalizacion geolocalizacion, Usuario usuario) {
+    public Paseo(int id, String descripcion, LocalDate fecha_inicio, LocalDate fecha_fin, Mascotas mascotas, Geolocalizacion geolocalizacion, Usuario usuario) {
         this.id = id;
         this.descripcion = descripcion;
         this.fecha_inicio = fecha_inicio;
@@ -63,19 +63,19 @@ public class Paseo {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha_inicio() {
+    public LocalDate getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(Date fecha_inicio) {
+    public void setFecha_inicio(LocalDate fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public Date getFecha_fin() {
+    public LocalDate getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
+    public void setFecha_fin(LocalDate fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 
