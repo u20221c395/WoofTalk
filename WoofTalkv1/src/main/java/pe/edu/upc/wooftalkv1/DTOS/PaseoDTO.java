@@ -4,13 +4,13 @@ import pe.edu.upc.wooftalkv1.entities.Geolocalizacion;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.entities.Usuario;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PaseoDTO {
     private int id;
     private String descripcion;
-    private Date fecha_inicio;
-    private Date fecha_fin;
+    private LocalDate fecha_inicio;
+    private LocalDate fecha_fin;
     private Mascotas mascotas;
     private Geolocalizacion geolocalizacion;
     private Usuario usuario;
@@ -31,19 +31,19 @@ public class PaseoDTO {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha_inicio() {
+    public LocalDate getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(Date fecha_inicio) {
+    public void setFecha_inicio(LocalDate fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public Date getFecha_fin() {
+    public LocalDate getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
+    public void setFecha_fin(LocalDate fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 

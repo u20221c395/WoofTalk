@@ -1,6 +1,5 @@
 package pe.edu.upc.wooftalkv1.servicesInterfaces;
 
-import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.entities.Paseo;
 
 import java.time.LocalDate;
@@ -13,5 +12,5 @@ public interface IPaseoServices {
     public Paseo listarId(int id);
     public void delete(int id);
 
-    public List<Paseo> buscarFecha_inicio(LocalDate fecha_inicio);
+    public List<Paseo> buscarFecha_inicio(LocalDate fecha);
 }
