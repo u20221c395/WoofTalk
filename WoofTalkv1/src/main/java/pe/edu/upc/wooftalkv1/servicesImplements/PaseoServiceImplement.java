@@ -8,6 +8,7 @@ import pe.edu.upc.wooftalkv1.entities.Usuario;
 import pe.edu.upc.wooftalkv1.repositories.IPaseoRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IPaseoServices;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class PaseoServiceImplement implements IPaseoServices {
@@ -38,5 +39,10 @@ public class PaseoServiceImplement implements IPaseoServices {
     @Override
     public void delete(int id) {
         pR.deleteById(id);
+    }
+
+    @Override
+    public List<Paseo> buscarFecha_inicio(LocalDate fecha_inicio) {
+        return pR.findByFecha_inicio(fecha_inicio);
     }
 }
