@@ -21,7 +21,7 @@ public class SolicitudController {
     //Listar Solicitud
     @GetMapping("/listar")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public List<SolicitudDTO> obtenerUsuarios(){
+    public List<SolicitudDTO> obtenerSolicitud(){
 
         return iSolicitudServices.listar().stream().map(x->{
             ModelMapper m=new ModelMapper();
