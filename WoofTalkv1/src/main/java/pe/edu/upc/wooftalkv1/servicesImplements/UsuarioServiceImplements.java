@@ -1,6 +1,7 @@
 package pe.edu.upc.wooftalkv1.servicesImplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.entities.Usuario;
 import pe.edu.upc.wooftalkv1.repositories.IUsuarioRepository;
@@ -12,6 +13,8 @@ public class UsuarioServiceImplements implements IUsuarioServices {
 
     @Autowired
     private IUsuarioRepository usuarioRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     //Listar Usuario
     @Override
@@ -19,7 +22,15 @@ public class UsuarioServiceImplements implements IUsuarioServices {
 
     //Registrar Usuario
     @Override
-    public Usuario registrar(Usuario usuario) {return usuarioRepository.save(usuario);}
+    //public Usuario registrar(Usuario usuario)
+    public void registrar(Usuario usuario){
+    String encriptacion = passwordEncoder.encode(usuario.getPassword());
+        usuario.setPassword(encriptacion);
+        usuarioRepository.save(usuario);
+        }
+   // {usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+    //    usuarioRepository.save(usuario);}
+    //{return usuarioRepository.save(usuario);}
 
     //Listar por Id Usuario
     @Override
