@@ -10,7 +10,8 @@ public interface IUsuarioServices {
     public List<Usuario> listar();
 
     //Registrar Usuario
-    public Usuario registrar(Usuario usuario);
+    public void registrar(Usuario usuario);
+    //public Usuario registrar(Usuario usuario);
 
     //Listar por Id Usuario
     public Usuario listarId(Long id);
