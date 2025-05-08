@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.wooftalkv1.DTOS.ObtenerUsuarioDTO;
 import pe.edu.upc.wooftalkv1.DTOS.UsuarioDTO;
 import pe.edu.upc.wooftalkv1.entities.Usuario;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IUsuarioServices;
@@ -20,11 +21,10 @@ public class UsuarioController {
     //Listar Usuario
     @GetMapping("/listar")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public List<UsuarioDTO> obtenerUsuarios(){
-
+    public List<ObtenerUsuarioDTO> obtenerUsuarios(){
         return iusuarioServices.listar().stream().map(x->{
             ModelMapper m=new ModelMapper();
-            return m.map(x,UsuarioDTO.class);
+            return m.map(x,ObtenerUsuarioDTO.class);
         }).collect(Collectors.toList());
     }
 
