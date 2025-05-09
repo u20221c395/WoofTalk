@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.wooftalkv1.DTOS.ClimaDTO;
 import pe.edu.upc.wooftalkv1.DTOS.MetodoPagoDTO;
-import pe.edu.upc.wooftalkv1.DTOS.UsuarioDTO;
-import pe.edu.upc.wooftalkv1.entities.Clima;
 
 import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IMetodoPagoServices;
