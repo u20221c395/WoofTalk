@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.ObtenerUsuarioDTO;
+import pe.edu.upc.wooftalkv1.DTOS.PaseoDTO;
 import pe.edu.upc.wooftalkv1.DTOS.UsuarioDTO;
 import pe.edu.upc.wooftalkv1.entities.Usuario;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IUsuarioServices;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 @RestController
@@ -60,6 +62,15 @@ public class UsuarioController {
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") Long id){
         iusuarioServices.eliminar(id);
+    }
+
+    @GetMapping("/buscarportelefono")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public List<UsuarioDTO> buscarUsuarioPorTelefono(String telefono) {
+        return iusuarioServices.buscarUsuarioTelefono(telefono).stream().map(y ->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y, UsuarioDTO.class);
+        }).collect(Collectors.toList());
     }
 }
 

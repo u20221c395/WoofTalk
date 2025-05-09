@@ -47,4 +47,8 @@ public class UsuarioServiceImplements implements IUsuarioServices {
     public void eliminar(Long id) {
         usuarioRepository.deleteById(id);
     }
+
+    @Override
+    public List<Usuario> buscarUsuarioTelefono(String telefono) { return usuarioRepository.buscarUsuarioPorTelefono(telefono); }
+
 }
