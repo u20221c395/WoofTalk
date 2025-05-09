@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.ContratoDTO;
 import pe.edu.upc.wooftalkv1.entities.Contrato;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
+import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IContratoServices;
 
 import java.util.List;
@@ -64,6 +65,15 @@ public class ContratoController {
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public List<ContratoDTO> buscarContratoMascotas(@RequestParam Mascotas mascotas) {
         return coS.buscarContratoMascotas(mascotas).stream().map(y ->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,ContratoDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/buscarcontratopormetododepago")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public List<ContratoDTO> buscarContratoMP(@RequestParam MetodoPago mp) {
+        return coS.buscarContratoMetodoPago(mp).stream().map(y ->{
             ModelMapper m = new ModelMapper();
             return m.map(y,ContratoDTO.class);
         }).collect(Collectors.toList());

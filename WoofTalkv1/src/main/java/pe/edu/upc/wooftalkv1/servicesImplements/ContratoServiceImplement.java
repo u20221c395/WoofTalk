@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.entities.Contrato;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
+import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.repositories.IContratoRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IContratoServices;
 
@@ -35,5 +36,10 @@ public class ContratoServiceImplement implements IContratoServices {
     @Override
     public List<Contrato> buscarContratoMascotas(Mascotas mascotas) {
         return coR.buscarContratosPorIdMascota(mascotas.getId());
+    }
+
+    @Override
+    public List<Contrato> buscarContratoMetodoPago(MetodoPago metodoPago) {
+        return coR.buscarContratosPorMetodoPago(metodoPago.getDescripcion());
     }
 }
