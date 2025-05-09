@@ -13,7 +13,7 @@ public interface ICalificacionServices {
     public Calificacion registrar (Calificacion calificacion);
 
     //Listar por Id Calificacion
-    public List<Calificacion> find(int id);
+    public Calificacion find(int id);
 
     //Actualizar Calificacion
     public void actualizar(Calificacion calificacion);
