@@ -15,6 +15,6 @@ public interface IContratoRepository extends JpaRepository<Contrato, Integer> {
     @Query("SELECT c FROM Contrato c WHERE c.fecha_inicio = :fecha_inicio")
     List<Contrato> buscarContratosFechaInicio(@Param("fecha_inicio") Date fecha_inicio);
 
-    @Query("SELECT c FROM Contrato c WHERE c.metodoPago = :metodopago")
-    List<Contrato> buscarContratosPorMetodoPago(@Param("metodopago") String metodopago);
+    @Query("SELECT c FROM Contrato c WHERE c.monto = :Monto")
+    List<Contrato> buscarContratosPorMonto(@Param("Monto") Double Monto);
 }
