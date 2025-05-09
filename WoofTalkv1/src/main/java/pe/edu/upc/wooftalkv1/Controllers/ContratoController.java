@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.ContratoDTO;
+import pe.edu.upc.wooftalkv1.DTOS.ContratoMontoDTO;
 import pe.edu.upc.wooftalkv1.entities.Contrato;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.entities.MetodoPago;
@@ -72,10 +73,10 @@ public class ContratoController {
 
     @GetMapping("/buscarcontratopormetododepago")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public List<ContratoDTO> buscarContratoMP(@RequestParam MetodoPago mp) {
-        return coS.buscarContratoMetodoPago(mp).stream().map(y ->{
+    public List<ContratoMontoDTO> buscarContratoPorMonto(@RequestParam double mo) {
+        return coS.buscarContratosPorMonto(mo).stream().map(y ->{
             ModelMapper m = new ModelMapper();
-            return m.map(y,ContratoDTO.class);
+            return m.map(y, ContratoMontoDTO.class);
         }).collect(Collectors.toList());
     }
 

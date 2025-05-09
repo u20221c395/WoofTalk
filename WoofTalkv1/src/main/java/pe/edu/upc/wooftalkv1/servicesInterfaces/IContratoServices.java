@@ -14,5 +14,5 @@ public interface IContratoServices {
     public void delete(int id);
 
     List<Contrato> buscarContratoMascotas(Mascotas mascotas);
-    List<Contrato> buscarContratoMetodoPago(MetodoPago metodoPago);
+    List<Contrato> buscarContratosPorMonto(double monto);
 }
