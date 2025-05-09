@@ -9,7 +9,7 @@ import pe.edu.upc.wooftalkv1.servicesInterfaces.IGeolocalizacionServices;
 import java.util.List;
 
 @Service
-public abstract class GeolocalizacionServiceImplement implements IGeolocalizacionServices {
+public  class GeolocalizacionServiceImplement implements IGeolocalizacionServices {
     @Autowired
     private IGeolocalizacionRepository gR;
 
