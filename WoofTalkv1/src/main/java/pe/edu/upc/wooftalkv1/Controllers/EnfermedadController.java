@@ -2,15 +2,11 @@ package pe.edu.upc.wooftalkv1.Controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.wooftalkv1.DTOS.BuscarPorMascotaDTO;
-import pe.edu.upc.wooftalkv1.DTOS.CantidadRolUsuarioDTO;
-import pe.edu.upc.wooftalkv1.DTOS.EnfermedadDTO;
-import pe.edu.upc.wooftalkv1.DTOS.RolDTO;
+import pe.edu.upc.wooftalkv1.DTOS.*;
 import pe.edu.upc.wooftalkv1.entities.Enfermedad;
-import pe.edu.upc.wooftalkv1.entities.Rol;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IEnfermedadServices;
-import pe.edu.upc.wooftalkv1.servicesInterfaces.IRolServices;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,6 +41,15 @@ public class EnfermedadController {
         Enfermedad r = m.map(dto , Enfermedad.class);
         rE.update(r);
     }
+
+    @GetMapping("/buscarporid/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public EnfermedadDTO listarId(@PathVariable("id") int id){
+        ModelMapper m = new ModelMapper();
+        EnfermedadDTO dto=m.map(rE.ListarId(id),EnfermedadDTO.class);
+        return dto;
+    }
+
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id) {
         rE.delete(id);
