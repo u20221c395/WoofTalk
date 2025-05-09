@@ -8,7 +8,11 @@ import java.util.List;
 public interface IContratoServices {
     public List<Contrato> list();
     public void insert(Contrato contrato);
+    public List<Contrato> find(int id);
     public void update(Contrato c);
+
+    Contrato listarId(int id);
+
     public void delete(int id);
 
     List<Contrato> buscarContratoMascotas(Mascotas mascotas);
