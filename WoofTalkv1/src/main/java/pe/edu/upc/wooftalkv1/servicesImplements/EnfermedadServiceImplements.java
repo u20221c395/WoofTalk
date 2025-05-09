@@ -9,10 +9,9 @@ import pe.edu.upc.wooftalkv1.servicesInterfaces.IEnfermedadServices;
 import java.util.List;
 
 @Service
-public abstract class EnfermedadServiceImplements implements IEnfermedadServices {
+public class EnfermedadServiceImplements implements IEnfermedadServices {
     @Autowired
     private IEnfermedadRepository eR;
-
 
     @Override
     public List<Enfermedad> list() {
