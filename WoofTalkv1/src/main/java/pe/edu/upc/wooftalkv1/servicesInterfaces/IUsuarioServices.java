@@ -21,4 +21,6 @@ public interface IUsuarioServices {
 
     //Eliminar Usuario
     void eliminar(Long id);
+
+    public List<Usuario> buscarUsuarioTelefono(String telefono);
 }
