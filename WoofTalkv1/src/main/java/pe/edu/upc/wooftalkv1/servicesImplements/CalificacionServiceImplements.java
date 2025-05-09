@@ -3,6 +3,7 @@ package pe.edu.upc.wooftalkv1.servicesImplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.entities.Calificacion;
+import pe.edu.upc.wooftalkv1.entities.Contrato;
 import pe.edu.upc.wooftalkv1.repositories.ICalificacionRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.ICalificacionServices;
 
@@ -25,10 +26,9 @@ public class CalificacionServiceImplements implements ICalificacionServices {
     }
 
     @Override
-    public List<Calificacion> find(int id) {
-        return List.of();
+    public Calificacion find(int id) {
+        return cR.findById(id).orElse(new Calificacion());
     }
-
 
     @Override
     public void actualizar(Calificacion calificacion){
