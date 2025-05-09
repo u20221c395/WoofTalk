@@ -3,6 +3,7 @@ package pe.edu.upc.wooftalkv1.Controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.CantidadRolUsuarioDTO;
 import pe.edu.upc.wooftalkv1.DTOS.RolDTO;
@@ -36,12 +37,21 @@ public class RolController {
         rI.insert(r);
     }
 
-    @PutMapping
+    @PutMapping("/actualizar")
     public void modificar(@RequestBody RolDTO dto) {
         ModelMapper m = new ModelMapper();
         Rol a = m.map(dto, Rol.class);
         rI.update(a);
     }
+
+    @GetMapping("/buscarporid/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public RolDTO listarId(@PathVariable("id") int id){
+        ModelMapper m = new ModelMapper();
+        RolDTO dto=m.map(rI.listarId(id),RolDTO.class);
+        return dto;
+    }
+
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id) {
         rI.delete(id);
