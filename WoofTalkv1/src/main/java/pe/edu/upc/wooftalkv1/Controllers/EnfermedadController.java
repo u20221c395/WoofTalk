@@ -47,7 +47,7 @@ public class EnfermedadController {
 
     @GetMapping("/buscarporid/{id}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public EnfermedadDTO listarId(@PathVariable("id") int id){
+        public EnfermedadDTO listarId(@PathVariable("id") int id){
         ModelMapper m = new ModelMapper();
         EnfermedadDTO dto=m.map(rE.ListarId(id),EnfermedadDTO.class);
         return dto;
