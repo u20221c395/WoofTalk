@@ -19,6 +19,7 @@ public class EnfermedadController {
     private IEnfermedadServices rE;
 
     @GetMapping("/listar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public List<EnfermedadDTO> listar() {
         return rE.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -28,6 +29,7 @@ public class EnfermedadController {
     }
 
     @PostMapping("/agregar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody EnfermedadDTO enfermedadDTO) {
 
         ModelMapper m = new ModelMapper();
@@ -35,7 +37,8 @@ public class EnfermedadController {
         rE.insert(r);
     }
 
-    @PutMapping
+    @PutMapping("/modificar")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody EnfermedadDTO dto) {
         ModelMapper m = new ModelMapper();
         Enfermedad r = m.map(dto , Enfermedad.class);
@@ -51,11 +54,13 @@ public class EnfermedadController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") int id) {
         rE.delete(id);
     }
 
     @GetMapping("/mascotasPorEnfermedad/{nombreEnfermedad}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public List<BuscarPorMascotaDTO> listarMascotasPorEnfermedad(@RequestParam String nombreEnfermedad) {
         List<String[]> resultados = rE.buscarMascotasPorEnfermedad(nombreEnfermedad);
 
