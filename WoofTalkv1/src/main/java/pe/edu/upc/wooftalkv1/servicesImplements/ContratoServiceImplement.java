@@ -27,9 +27,7 @@ public abstract class ContratoServiceImplement implements IContratoServices {
     public void update(Contrato c) {coR.save(c);}
 
     @Override
-    public Contrato listarId(int id) {
-        return coR.findById(id).orElse(new Contrato());
-    }
+    public Contrato listarId(int id) {return coR.findById(id).orElse(new Contrato());}
 
     @Override
     public void delete(int id) {coR.deleteById(id);}
