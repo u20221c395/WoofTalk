@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.wooftalkv1.DTOS.CalificacionDTO;
 import pe.edu.upc.wooftalkv1.DTOS.ContratoDTO;
 import pe.edu.upc.wooftalkv1.entities.Contrato;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
@@ -45,6 +46,15 @@ public class ContratoController {
         Contrato r = m.map(dto , Contrato.class);
         coS.update(r);
     }
+
+    @GetMapping("/buscarporid/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
+    public ContratoDTO listarId(@PathVariable("id") int id){
+        ModelMapper m = new ModelMapper();
+        ContratoDTO dto=m.map(coS.find(id),ContratoDTO.class);
+        return dto;
+    }
+
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") int id) {
