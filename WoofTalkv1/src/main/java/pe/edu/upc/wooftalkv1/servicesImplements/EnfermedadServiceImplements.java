@@ -9,7 +9,7 @@ import pe.edu.upc.wooftalkv1.servicesInterfaces.IEnfermedadServices;
 import java.util.List;
 
 @Service
-public class EnfermedadServiceImplements implements IEnfermedadServices {
+public abstract class EnfermedadServiceImplements implements IEnfermedadServices {
     @Autowired
     private IEnfermedadRepository eR;
 
@@ -28,6 +28,9 @@ public class EnfermedadServiceImplements implements IEnfermedadServices {
     public void update(Enfermedad e) {
 eR.save(e);
     }
+
+    @Override
+    public Enfermedad ListarId(int id) {return eR.findById(id).orElse(new Enfermedad());}
 
     @Override
     public void delete(int id) {
