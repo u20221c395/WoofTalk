@@ -45,7 +45,6 @@ public class RolController {
     }
 
     @GetMapping("/buscarporid/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public RolDTO listarId(@PathVariable("id") int id){
         ModelMapper m = new ModelMapper();
         RolDTO dto=m.map(rI.listarId(id),RolDTO.class);
