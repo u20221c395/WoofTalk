@@ -1,6 +1,5 @@
 package pe.edu.upc.wooftalkv1.DTOS;
 
-import jakarta.persistence.Column;
 
 public class EnfermedadDTO {
     private int IdEnfermedad;

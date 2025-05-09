@@ -1,8 +1,5 @@
 package pe.edu.upc.wooftalkv1.DTOS;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 
