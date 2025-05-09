@@ -2,8 +2,6 @@ package pe.edu.upc.wooftalkv1.entities;
 
 import jakarta.persistence.*;
 
-import java.io.Serializable;
-
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
