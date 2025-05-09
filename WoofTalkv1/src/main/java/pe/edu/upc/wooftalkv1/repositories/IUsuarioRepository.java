@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.wooftalkv1.entities.Usuario;
 
+import java.util.List;
+
+
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario,Long> {
 
@@ -23,4 +26,6 @@ public interface IUsuarioRepository extends JpaRepository<Usuario,Long> {
     @Query(value = "insert into roles (rol, usuario_id) VALUES (:rol, :usuario_id)", nativeQuery = true)
     public void insRol(@Param("rol") String authority, @Param("usuario_id") Long usuario_id);
 
+    @Query("SELECT u FROM Usuario u WHERE u.telefono = :telefono")
+    List <Usuario> buscarUsuarioPorTelefono(@Param("telefono") String telefono);
 }
