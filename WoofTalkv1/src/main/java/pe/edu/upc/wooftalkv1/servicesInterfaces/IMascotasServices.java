@@ -1,9 +1,7 @@
 package pe.edu.upc.wooftalkv1.servicesInterfaces;
 
 import pe.edu.upc.wooftalkv1.DTOS.MascotasporDuenoDTO;
-import pe.edu.upc.wooftalkv1.entities.Clima;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
-import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 
 import java.util.List;
 
