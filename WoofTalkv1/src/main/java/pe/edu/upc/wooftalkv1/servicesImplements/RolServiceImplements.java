@@ -33,6 +33,11 @@ public class RolServiceImplements implements IRolServices {
     }
 
     @Override
+    public Rol listarId(int id) {
+        return rS.findById(id).orElse(new Rol());
+    }
+
+    @Override
     public void delete(int id) {
         rS.deleteById(id);
     }
