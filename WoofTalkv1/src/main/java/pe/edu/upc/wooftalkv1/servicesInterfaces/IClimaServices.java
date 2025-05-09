@@ -1,7 +1,6 @@
 package pe.edu.upc.wooftalkv1.servicesInterfaces;
 
 import pe.edu.upc.wooftalkv1.entities.Clima;
-import pe.edu.upc.wooftalkv1.entities.Enfermedad;
 
 import java.util.List;
 
