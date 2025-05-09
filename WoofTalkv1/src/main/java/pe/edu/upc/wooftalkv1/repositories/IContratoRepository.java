@@ -6,13 +6,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.wooftalkv1.entities.Contrato;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface IContratoRepository extends JpaRepository<Contrato, Integer> {
 
-    @Query("SELECT c FROM Contrato c WHERE c.mascotas.id = :mascotaId")
-    List<Contrato> buscarContratosPorIdMascota(@Param("mascotaId") Integer mascotaId);
+    @Query("SELECT c FROM Contrato c WHERE c.fecha_inicio = :fecha_inicio")
+    List<Contrato> buscarContratosFechaInicio(@Param("fecha_inicio") Date fecha_inicio);
 
     @Query("SELECT c FROM Contrato c WHERE c.metodoPago = :metodopago")
     List<Contrato> buscarContratosPorMetodoPago(@Param("metodopago") String metodopago);
