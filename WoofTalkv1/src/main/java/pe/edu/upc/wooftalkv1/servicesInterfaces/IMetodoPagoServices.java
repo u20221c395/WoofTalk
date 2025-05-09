@@ -1,7 +1,6 @@
 package pe.edu.upc.wooftalkv1.servicesInterfaces;
 
 import pe.edu.upc.wooftalkv1.entities.MetodoPago;
-import pe.edu.upc.wooftalkv1.entities.Usuario;
 
 import java.util.List;
 

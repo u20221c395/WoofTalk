@@ -3,7 +3,6 @@ package pe.edu.upc.wooftalkv1.servicesImplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.entities.Calificacion;
-import pe.edu.upc.wooftalkv1.entities.Contrato;
 import pe.edu.upc.wooftalkv1.repositories.ICalificacionRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.ICalificacionServices;
 

@@ -3,7 +3,6 @@ package pe.edu.upc.wooftalkv1.servicesImplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.entities.Clima;
-import pe.edu.upc.wooftalkv1.entities.Paseo;
 import pe.edu.upc.wooftalkv1.repositories.IClimaRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IClimaServices;
 

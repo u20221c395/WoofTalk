@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface IContratoRepository extends JpaRepository<Contrato, Integer> {
+
     @Query("SELECT c FROM Contrato c WHERE c.mascotas.id = :mascotaId")
     List<Contrato> buscarContratosPorIdMascota(@Param("mascotaId") Integer mascotaId);
 
