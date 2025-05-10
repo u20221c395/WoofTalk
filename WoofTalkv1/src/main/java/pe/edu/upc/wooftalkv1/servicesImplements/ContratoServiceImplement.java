@@ -3,12 +3,10 @@ package pe.edu.upc.wooftalkv1.servicesImplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wooftalkv1.entities.Contrato;
-import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.repositories.IContratoRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IContratoServices;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 
