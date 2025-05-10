@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.wooftalkv1.DTOS.BuscarContratoDTO;
 import pe.edu.upc.wooftalkv1.DTOS.ContratoDTO;
 import pe.edu.upc.wooftalkv1.DTOS.ContratoMontoDTO;
 import pe.edu.upc.wooftalkv1.entities.Contrato;
@@ -11,6 +12,7 @@ import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IContratoServices;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,12 +64,12 @@ public class ContratoController {
     }
 
 
-    @GetMapping("/buscarcontratoporidmascotas")
+    @GetMapping("/buscarcontratoporfecha")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public List<ContratoDTO> buscarContratoMascotas(@RequestParam Mascotas mascotas) {
-        return coS.buscarContratoMascotas(mascotas).stream().map(y ->{
+    public List<BuscarContratoDTO> buscarContratoMascotas(@RequestParam LocalDate fecha_inicio) {
+        return coS.buscarContratoPorFecha(fecha_inicio).stream().map(y ->{
             ModelMapper m = new ModelMapper();
-            return m.map(y,ContratoDTO.class);
+            return m.map(y, BuscarContratoDTO.class);
         }).collect(Collectors.toList());
     }
 
