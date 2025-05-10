@@ -1,10 +1,11 @@
 package pe.edu.upc.wooftalkv1.DTOS;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class BuscarContratoDTO {
     private int id_Contrato;
-    private Date fecha_fin;
+    private LocalDate fecha_fin;
     private double monto;
 
     public int getId_Contrato() {
@@ -15,11 +16,11 @@ public class BuscarContratoDTO {
         this.id_Contrato = id_Contrato;
     }
 
-    public Date getFecha_fin() {
+    public LocalDate getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
+    public void setFecha_fin(LocalDate fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 
