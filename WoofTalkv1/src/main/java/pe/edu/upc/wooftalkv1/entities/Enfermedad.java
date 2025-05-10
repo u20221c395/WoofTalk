@@ -11,7 +11,7 @@ public class Enfermedad {
     private int IdEnfermedad;
 
    @Column(name = "Nombre Enfermedad", nullable = false ,length = 100)
-    private String nombreEnfermedadzzzz;
+    private String nombreEnfermedad;
 
     @Column(name = "Descripcion de la enfermedad", nullable = false ,length = 200)
     private String descripcionEnfermedad;
