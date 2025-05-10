@@ -1,6 +1,6 @@
 package pe.edu.upc.wooftalkv1.DTOS;
 
-import pe.edu.upc.wooftalkv1.entities.Calificacion;
+import pe.edu.upc.wooftalkv1.entities.Usuario;
 
 public class MascotasDTO {
     private int id;
@@ -9,7 +9,7 @@ public class MascotasDTO {
     private int edad;
     private String tamanio;
     private String observaciones;
-    private Calificacion calificacion;
+    private Usuario usuario;
 
     public int getId() {
         return id;
@@ -59,11 +59,11 @@ public class MascotasDTO {
         this.observaciones = observaciones;
     }
 
-    public Calificacion getCalificacion() {
-        return calificacion;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setCalificacion(Calificacion calificacion) {
-        this.calificacion = calificacion;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
