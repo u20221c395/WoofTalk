@@ -2,6 +2,7 @@ package pe.edu.upc.wooftalkv1.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,10 +13,10 @@ public class Contrato {
     private int id_Contrato;
 
     @Column(name = "Fecha_inicio", nullable = false)
-    private Date fecha_inicio;
+    private LocalDate fecha_inicio;
 
     @Column(name = "Fecha_fin", nullable = false)
-    private Date fecha_fin;
+    private LocalDate fecha_fin;
 
     @Column(name = "Monto", nullable = false)
     private double monto;
@@ -31,7 +32,7 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(int id_Contrato, Date fecha_inicio, Date fecha_fin, double monto, Mascotas mascotas, MetodoPago metodoPago) {
+    public Contrato(int id_Contrato, LocalDate fecha_inicio, LocalDate fecha_fin, double monto, Mascotas mascotas, MetodoPago metodoPago) {
         this.id_Contrato = id_Contrato;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
@@ -48,19 +49,19 @@ public class Contrato {
         this.id_Contrato = id_Contrato;
     }
 
-    public Date getFecha_inicio() {
+    public LocalDate getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(Date fecha_inicio) {
+    public void setFecha_inicio(LocalDate fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public Date getFecha_fin() {
+    public LocalDate getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
+    public void setFecha_fin(LocalDate fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 

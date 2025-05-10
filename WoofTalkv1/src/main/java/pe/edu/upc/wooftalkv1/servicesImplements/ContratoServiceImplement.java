@@ -7,6 +7,7 @@ import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.repositories.IContratoRepository;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IContratoServices;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class ContratoServiceImplement implements IContratoServices {
     public void delete(int id) {coR.deleteById(id);}
 
     @Override
-    public List<Contrato> buscarContratoPorFecha(Date fecha_inicio) {
+    public List<Contrato> buscarContratoPorFecha(LocalDate fecha_inicio) {
         return coR.buscarContratosFechaInicio(fecha_inicio);
     }
 

@@ -3,12 +3,13 @@ package pe.edu.upc.wooftalkv1.DTOS;
 import pe.edu.upc.wooftalkv1.entities.Mascotas;
 import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ContratoDTO {
     private int id_Contrato;
-    private Date fecha_inicio;
-    private Date fecha_fin;
+    private LocalDate fecha_inicio;
+    private LocalDate fecha_fin;
     private double monto;
     private Mascotas mascotas;
     private MetodoPago metodoPago;
@@ -21,19 +22,19 @@ public class ContratoDTO {
         this.id_Contrato = id_Contrato;
     }
 
-    public Date getFecha_inicio() {
+    public LocalDate getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(Date fecha_inicio) {
+    public void setFecha_inicio(LocalDate fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public Date getFecha_fin() {
+    public LocalDate getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
+    public void setFecha_fin(LocalDate fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 

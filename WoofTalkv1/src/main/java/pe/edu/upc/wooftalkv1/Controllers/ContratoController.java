@@ -5,15 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.wooftalkv1.DTOS.BuscarContratoDTO;
-import pe.edu.upc.wooftalkv1.DTOS.BuscarMascotaTamanioDTO;
 import pe.edu.upc.wooftalkv1.DTOS.ContratoDTO;
 import pe.edu.upc.wooftalkv1.DTOS.ContratoMontoDTO;
 import pe.edu.upc.wooftalkv1.entities.Contrato;
-import pe.edu.upc.wooftalkv1.entities.Mascotas;
-import pe.edu.upc.wooftalkv1.entities.MetodoPago;
 import pe.edu.upc.wooftalkv1.servicesInterfaces.IContratoServices;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +33,6 @@ public class ContratoController {
     @PostMapping("/agregar")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody ContratoDTO contrato) {
-
         ModelMapper m = new ModelMapper();
         Contrato r = m.map(contrato, Contrato.class);
         coS.insert(r);
@@ -67,7 +63,7 @@ public class ContratoController {
 
     @GetMapping("/buscarcontratoporfechainicio")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public List<BuscarContratoDTO> bContratoMascotas(@RequestParam Date fechainicio) {
+    public List<BuscarContratoDTO> bContratoMascotas(@RequestParam LocalDate fechainicio) {
         return coS.buscarContratoPorFecha(fechainicio).stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, BuscarContratoDTO.class);
